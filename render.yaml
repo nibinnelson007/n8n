@@ -11,7 +11,7 @@ services:
       - key: N8N_PROTOCOL
         value: https
       - key: N8N_HOST
-        value: n8n-insta-jitu.onrender.com
+        value: 0.0.0.0
       - key: WEBHOOK_TUNNEL_URL
         value: https://n8n-insta-jitu.onrender.com
       - key: N8N_ENCRYPTION_KEY
