@@ -5,20 +5,19 @@ services:
     plan: free
     branch: master
     buildCommand: |
-      corepack enable
-      corepack prepare pnpm@latest --activate
-      pnpm install --shamefully-hoist
-      pnpm build
-    startCommand: corepack pnpm start
+      NODE_OPTIONS="--max-old-space-size=4096" corepack yarn build
+    startCommand: n8n start
     envVars:
       - key: NODE_VERSION
-        value: 20
+        value: 18
       - key: N8N_PORT
         value: 3000
       - key: N8N_HOST
-        value: n8n-insta-jitu.onrender.com
+        value: 0.0.0.0
       - key: WEBHOOK_TUNNEL_URL
         value: https://n8n-insta-jitu.onrender.com
+      - key: NODE_OPTIONS
+        value: "--max-old-space-size=4096"
       - key: N8N_ENCRYPTION_KEY
         generateValue: true
       - key: N8N_BASIC_AUTH_ACTIVE
