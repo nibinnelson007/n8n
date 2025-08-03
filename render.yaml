@@ -6,7 +6,7 @@ services:
     branch: master
     buildCommand: |
       NODE_OPTIONS="--max-old-space-size=2048" pnpm install
-      NODE_OPTIONS="--max-old-space-size=2048" pnpm --workspace-concurrency=1 run build --filter=!@n8n/chat
+      NODE_OPTIONS="--max-old-space-size=2048" pnpm --workspace-concurrency=1 run build
     startCommand: n8n start
     envVars:
       - key: NODE_VERSION
