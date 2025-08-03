@@ -5,19 +5,20 @@ services:
     plan: free
     branch: master
     buildCommand: |
-      NODE_OPTIONS="--max-old-space-size=4096" corepack yarn build
+      NODE_OPTIONS="--max-old-space-size=2048" pnpm install
+      NODE_OPTIONS="--max-old-space-size=2048" pnpm --workspace-concurrency=1 run build --filter=!@n8n/chat
     startCommand: n8n start
     envVars:
       - key: NODE_VERSION
         value: 18
+      - key: NODE_OPTIONS
+        value: "--max-old-space-size=2048"
       - key: N8N_PORT
         value: 3000
       - key: N8N_HOST
         value: 0.0.0.0
       - key: WEBHOOK_TUNNEL_URL
         value: https://n8n-insta-jitu.onrender.com
-      - key: NODE_OPTIONS
-        value: "--max-old-space-size=4096"
       - key: N8N_ENCRYPTION_KEY
         generateValue: true
       - key: N8N_BASIC_AUTH_ACTIVE
