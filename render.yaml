@@ -6,13 +6,13 @@ services:
     branch: master
     buildCommand: |
       corepack enable
-      corepack prepare yarn@stable --activate
-      yarn install --ignore-engines
-      yarn build
-    startCommand: corepack yarn start
+      corepack prepare pnpm@latest --activate
+      pnpm install --shamefully-hoist
+      pnpm build
+    startCommand: corepack pnpm start
     envVars:
       - key: NODE_VERSION
-        value: 18
+        value: 20
       - key: N8N_PORT
         value: 3000
       - key: N8N_HOST
