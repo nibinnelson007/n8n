@@ -2,6 +2,7 @@ packages:
   - packages/*
   - packages/@n8n/*
   - packages/frontend/**
+  - "!packages/frontend/@n8n/chat"
   - packages/extensions/**
   - cypress
   - packages/testing/**
