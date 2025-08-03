@@ -1,22 +1,13 @@
 services:
   - type: web
     name: n8n
-    env: node
+    env: docker
     plan: free
     branch: master
-    buildCommand: |
-      NODE_OPTIONS="--max-old-space-size=2048" pnpm install
-      NODE_OPTIONS="--max-old-space-size=2048" pnpm --workspace-concurrency=1 run build
-    startCommand: n8n start
+    dockerfilePath: ./Dockerfile
     envVars:
-      - key: NODE_VERSION
-        value: 20
-      - key: NODE_OPTIONS
-        value: "--max-old-space-size=2048"
-      - key: N8N_PORT
-        value: 3000
       - key: N8N_HOST
-        value: 0.0.0.0
+        value: n8n-insta-jitu.onrender.com
       - key: WEBHOOK_TUNNEL_URL
         value: https://n8n-insta-jitu.onrender.com
       - key: N8N_ENCRYPTION_KEY
